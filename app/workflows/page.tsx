@@ -11,19 +11,26 @@ import {
   BiTrash,
   BiPlus,
   BiRefresh,
-  BiTime
+  BiTime,
+  BiInfoCircle,
+  BiX
 } from 'react-icons/bi';
 
 interface Workflow {
   id: number;
   name: string;
   description: string;
+  detailedDescription?: string;
   status: 'active' | 'inactive' | 'error';
   lastRun: string;
   nextRun: string;
   successCount: number;
   errorCount: number;
   type: 'scraping' | 'notification' | 'matching' | 'report';
+  category?: string;
+  frequency?: string;
+  dataSource?: string;
+  output?: string;
 }
 
 export default function Workflows() {
@@ -33,6 +40,8 @@ export default function Workflows() {
   const [selectedType, setSelectedType] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [editingWorkflow, setEditingWorkflow] = useState<Workflow | null>(null);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [selectedWorkflow, setSelectedWorkflow] = useState<Workflow | null>(null);
 
   useEffect(() => {
     // Simulate loading workflows
@@ -41,56 +50,81 @@ export default function Workflows() {
         id: 1,
         name: 'اسکریپ آگهی‌های دیوار',
         description: 'جمع‌آوری خودکار آگهی‌های جدید از سایت دیوار',
+        detailedDescription: 'این ورک‌فلو هر ساعت به صورت خودکار به سایت دیوار متصل شده و آگهی‌های جدید املاک را دریافت می‌کند. اطلاعات شامل قیمت، موقعیت، متراژ، نوع ملک و تصاویر است. سپس این داده‌ها در پایگاه داده ذخیره شده و برای تحلیل و مچ کردن با نیاز مشتریان استفاده می‌شود.',
         status: 'active',
         lastRun: '2 ساعت پیش',
         nextRun: 'در 4 ساعت',
         successCount: 45,
         errorCount: 2,
-        type: 'scraping'
+        type: 'scraping',
+        category: 'جمع‌آوری داده',
+        frequency: 'هر ساعت',
+        dataSource: 'divar.ir',
+        output: 'آگهی‌های جدید املاک'
       },
       {
         id: 2,
         name: 'اسکریپ آگهی‌های شیپور',
         description: 'جمع‌آوری خودکار آگهی‌های جدید از سایت شیپور',
+        detailedDescription: 'این ورک‌فلو مشابه دیوار عمل می‌کند اما از سایت شیپور داده دریافت می‌کند. شیپور یکی از بزرگترین پلتفرم‌های خرید و فروش املاک در ایران است و این ورک‌فلو اطمینان می‌دهد که هیچ آگهی مهمی از دست نرود.',
         status: 'active',
         lastRun: '1 ساعت پیش',
         nextRun: 'در 5 ساعت',
         successCount: 32,
         errorCount: 1,
-        type: 'scraping'
+        type: 'scraping',
+        category: 'جمع‌آوری داده',
+        frequency: 'هر ساعت',
+        dataSource: 'sheypoor.com',
+        output: 'آگهی‌های جدید املاک'
       },
       {
         id: 3,
         name: 'مچ کردن ملک با مشتری',
         description: 'بررسی نیازهای مشتریان و ارسال پیشنهادات',
+        detailedDescription: 'این ورک‌فلو هوشمند از الگوریتم‌های یادگیری ماشین استفاده می‌کند تا آگهی‌های املاک را با نیازهای ثبت شده مشتریان تطبیق دهد. فاکتورهای مهم شامل قیمت، موقعیت جغرافیایی، متراژ، نوع ملک، امکانات و اولویت‌های مشتری است.',
         status: 'inactive',
         lastRun: '1 روز پیش',
         nextRun: 'غیرفعال',
         successCount: 12,
         errorCount: 0,
-        type: 'matching'
+        type: 'matching',
+        category: 'هوش مصنوعی',
+        frequency: 'روزانه',
+        dataSource: 'پایگاه داده داخلی',
+        output: 'لیست ملک‌های مناسب برای هر مشتری'
       },
       {
         id: 4,
         name: 'ارسال پیام‌های خودکار',
         description: 'ارسال SMS و واتساپ به مشتریان',
+        detailedDescription: 'این ورک‌فلو پس از مچ کردن ملک با مشتری، به صورت خودکار پیام‌های شخصی‌سازی شده به مشتریان ارسال می‌کند. پیام‌ها شامل جزئیات ملک، تصاویر، قیمت و اطلاعات تماس است. از طریق واتساپ، تلگرام و پیامک ارسال می‌شود.',
         status: 'error',
         lastRun: '3 ساعت پیش',
         nextRun: 'در 1 ساعت',
         successCount: 8,
         errorCount: 5,
-        type: 'notification'
+        type: 'notification',
+        category: 'ارتباطات',
+        frequency: 'فوری',
+        dataSource: 'سیستم مچ کردن',
+        output: 'پیام‌های ارسالی به مشتریان'
       },
       {
         id: 5,
         name: 'گزارش روزانه',
         description: 'تهیه و ارسال گزارش روزانه به مدیر',
+        detailedDescription: 'این ورک‌فلو روزانه داده‌های جمع‌آوری شده را تحلیل کرده و گزارش‌های جامعی از وضعیت بازار املاک ارائه می‌دهد. شامل روند قیمت‌ها، مناطق پرطرفدار، پیش‌بینی آینده و توصیه‌های سرمایه‌گذاری است.',
         status: 'active',
         lastRun: 'امروز 8:00',
         nextRun: 'فردا 8:00',
         successCount: 30,
         errorCount: 0,
-        type: 'report'
+        type: 'report',
+        category: 'تحلیل داده',
+        frequency: 'روزانه',
+        dataSource: 'داده‌های جمع‌آوری شده',
+        output: 'گزارش‌های تحلیلی بازار'
       }
     ]);
   }, []);
@@ -124,6 +158,16 @@ export default function Workflows() {
     if (window.confirm('آیا مطمئن هستید که می‌خواهید این ورک‌فلو را حذف کنید؟')) {
       setWorkflows(workflows.filter(workflow => workflow.id !== id));
     }
+  };
+
+  const handleShowDetails = (workflow: Workflow) => {
+    setSelectedWorkflow(workflow);
+    setShowDetailsModal(true);
+  };
+
+  const closeDetailsModal = () => {
+    setShowDetailsModal(false);
+    setSelectedWorkflow(null);
   };
 
   const handleSaveWorkflow = (workflowData: Partial<Workflow>) => {
@@ -325,6 +369,13 @@ export default function Workflows() {
                         >
                           <BiTrash />
                         </button>
+                        <button 
+                          className="btn btn-outline-info btn-sm"
+                          onClick={() => handleShowDetails(workflow)}
+                          title="مشاهده توضیحات کامل"
+                        >
+                          <BiInfoCircle />
+                        </button>
                       </div>
                     </td>
                   </tr>
@@ -405,6 +456,133 @@ export default function Workflows() {
                     </button>
                   </div>
                 </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Workflow Details Modal */}
+      {showDetailsModal && selectedWorkflow && (
+        <div className="modal show d-block" style={{backgroundColor: 'rgba(0,0,0,0.5)'}}>
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title d-flex align-items-center gap-2">
+                  <span className={`badge ${selectedWorkflow.status === 'active' ? 'bg-success' : selectedWorkflow.status === 'inactive' ? 'bg-secondary' : 'bg-danger'}`}>
+                    {selectedWorkflow.status === 'active' ? 'فعال' : selectedWorkflow.status === 'inactive' ? 'غیرفعال' : 'خطا'}
+                  </span>
+                  {selectedWorkflow.name}
+                </h5>
+                <button 
+                  type="button" 
+                  className="btn-close" 
+                  onClick={closeDetailsModal}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div className="mb-4">
+                  <h6 className="fw-bold">توضیحات تفصیلی</h6>
+                  <p className="text-muted">{selectedWorkflow.detailedDescription || selectedWorkflow.description}</p>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="card bg-light">
+                      <div className="card-body">
+                        <h6 className="card-title fw-bold">اطلاعات کلی</h6>
+                        <div className="row g-2">
+                          <div className="col-6">
+                            <small className="text-muted">دسته‌بندی:</small>
+                            <div className="fw-bold">{selectedWorkflow.category || 'نامشخص'}</div>
+                          </div>
+                          <div className="col-6">
+                            <small className="text-muted">فرکانس اجرا:</small>
+                            <div className="fw-bold">{selectedWorkflow.frequency || 'نامشخص'}</div>
+                          </div>
+                          <div className="col-6">
+                            <small className="text-muted">منبع داده:</small>
+                            <div className="fw-bold">{selectedWorkflow.dataSource || 'نامشخص'}</div>
+                          </div>
+                          <div className="col-6">
+                            <small className="text-muted">خروجی:</small>
+                            <div className="fw-bold">{selectedWorkflow.output || 'نامشخص'}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="card bg-light">
+                      <div className="card-body">
+                        <h6 className="card-title fw-bold">آمار عملکرد</h6>
+                        <div className="row g-2">
+                          <div className="col-6">
+                            <small className="text-muted">تعداد اجرا:</small>
+                            <div className="fw-bold">{selectedWorkflow.successCount + selectedWorkflow.errorCount}</div>
+                          </div>
+                          <div className="col-6">
+                            <small className="text-muted">نرخ موفقیت:</small>
+                            <div className="fw-bold text-success">
+                              {Math.round((selectedWorkflow.successCount / (selectedWorkflow.successCount + selectedWorkflow.errorCount)) * 100)}%
+                            </div>
+                          </div>
+                          <div className="col-6">
+                            <small className="text-muted">موفق:</small>
+                            <div className="fw-bold text-success">{selectedWorkflow.successCount}</div>
+                          </div>
+                          <div className="col-6">
+                            <small className="text-muted">خطا:</small>
+                            <div className="fw-bold text-danger">{selectedWorkflow.errorCount}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <div className="card bg-info bg-opacity-10">
+                    <div className="card-body">
+                      <h6 className="card-title fw-bold">وضعیت فعلی</h6>
+                      <div className="d-flex align-items-center gap-2">
+                        {getStatusBadge(selectedWorkflow.status)}
+                        <span className="text-muted">
+                          {selectedWorkflow.status === 'active' && 'ورک‌فلو در حال اجرا است'}
+                          {selectedWorkflow.status === 'inactive' && 'ورک‌فلو متوقف شده است'}
+                          {selectedWorkflow.status === 'error' && 'ورک‌فلو با خطا مواجه شده است'}
+                        </span>
+                      </div>
+                      <div className="mt-2">
+                        <small className="text-muted">آخرین اجرا: {selectedWorkflow.lastRun}</small>
+                        {selectedWorkflow.nextRun && selectedWorkflow.nextRun !== 'غیرفعال' && (
+                          <div>
+                            <small className="text-muted">اجرای بعدی: {selectedWorkflow.nextRun}</small>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button 
+                  type="button" 
+                  className="btn btn-secondary"
+                  onClick={closeDetailsModal}
+                >
+                  بستن
+                </button>
+                <button 
+                  type="button" 
+                  className="btn btn-primary"
+                  onClick={() => {
+                    closeDetailsModal();
+                    handleEdit(selectedWorkflow);
+                  }}
+                >
+                  ویرایش ورک‌فلو
+                </button>
               </div>
             </div>
           </div>
