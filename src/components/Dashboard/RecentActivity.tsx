@@ -1,4 +1,4 @@
-import { Clock, User, Building, FileText } from 'lucide-react';
+import { BiTime, BiUser, BiBuilding, BiFile } from 'react-icons/bi';
 
 const activities = [
   {
@@ -7,7 +7,7 @@ const activities = [
     title: 'مشتری جدید ثبت شد',
     description: 'احمد محمدی - جستجوی آپارتمان در تهران',
     time: '۱۰ دقیقه پیش',
-    icon: User,
+    icon: BiUser,
     color: 'bg-blue-500'
   },
   {
@@ -16,7 +16,7 @@ const activities = [
     title: 'فایل ملکی جدید',
     description: 'آپارتمان ۱۲۰ متری در سعادت‌آباد',
     time: '۳۰ دقیقه پیش',
-    icon: Building,
+    icon: BiBuilding,
     color: 'bg-green-500'
   },
   {
@@ -25,7 +25,7 @@ const activities = [
     title: 'آگهی جدید اسکریپ شد',
     description: 'ویلا ۲۵۰ متری در کرج - دیوار',
     time: '۱ ساعت پیش',
-    icon: FileText,
+    icon: BiFile,
     color: 'bg-purple-500'
   },
   {
@@ -34,7 +34,7 @@ const activities = [
     title: 'ورک‌فلو مچ کردن اجرا شد',
     description: '۵ مشتری با فایل‌های جدید مچ شدند',
     time: '۲ ساعت پیش',
-    icon: Clock,
+    icon: BiTime,
     color: 'bg-orange-500'
   }
 ];
