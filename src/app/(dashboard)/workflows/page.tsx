@@ -1,4 +1,4 @@
-import { Play, Pause, Settings, Activity, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { BiPlay, BiPause, BiCog, BiBarChart, BiTime, BiCheckCircle, BiXCircle } from 'react-icons/bi';
 
 const workflows = [
   {
@@ -51,13 +51,13 @@ export default function WorkflowsPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'active':
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
+        return <BiCheckCircle className="w-5 h-5 text-green-500" />;
       case 'inactive':
-        return <Pause className="w-5 h-5 text-gray-500" />;
+        return <BiPause className="w-5 h-5 text-gray-500" />;
       case 'error':
-        return <XCircle className="w-5 h-5 text-red-500" />;
+        return <BiXCircle className="w-5 h-5 text-red-500" />;
       default:
-        return <Clock className="w-5 h-5 text-yellow-500" />;
+        return <BiTime className="w-5 h-5 text-yellow-500" />;
     }
   };
 
@@ -91,11 +91,11 @@ export default function WorkflowsPage() {
         </div>
         <div className="flex gap-2">
           <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
-            <Play className="w-5 h-5" />
+            <BiPlay className="w-5 h-5" />
             اجرای همه
           </button>
           <button className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
-            <Settings className="w-5 h-5" />
+            <BiCog className="w-5 h-5" />
             تنظیمات
           </button>
         </div>
@@ -106,7 +106,7 @@ export default function WorkflowsPage() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <CheckCircle className="w-6 h-6 text-green-600" />
+              <BiCheckCircle className="w-6 h-6 text-green-600" />
             </div>
             <div>
               <p className="text-2xl font-bold text-gray-900">۲</p>
@@ -118,7 +118,7 @@ export default function WorkflowsPage() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-              <XCircle className="w-6 h-6 text-red-600" />
+              <BiXCircle className="w-6 h-6 text-red-600" />
             </div>
             <div>
               <p className="text-2xl font-bold text-gray-900">۱</p>
@@ -130,7 +130,7 @@ export default function WorkflowsPage() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Activity className="w-6 h-6 text-blue-600" />
+              <BiBarChart className="w-6 h-6 text-blue-600" />
             </div>
             <div>
               <p className="text-2xl font-bold text-gray-900">۴۵۴</p>
@@ -142,7 +142,7 @@ export default function WorkflowsPage() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <Clock className="w-6 h-6 text-purple-600" />
+              <BiTime className="w-6 h-6 text-purple-600" />
             </div>
             <div>
               <p className="text-2xl font-bold text-gray-900">۹۳%</p>
@@ -214,18 +214,18 @@ export default function WorkflowsPage() {
                     <div className="flex gap-2">
                       {workflow.status === 'active' ? (
                         <button className="text-red-600 hover:text-red-900 transition-colors p-1">
-                          <Pause className="w-4 h-4" />
+                          <BiPause className="w-4 h-4" />
                         </button>
                       ) : (
                         <button className="text-green-600 hover:text-green-900 transition-colors p-1">
-                          <Play className="w-4 h-4" />
+                          <BiPlay className="w-4 h-4" />
                         </button>
                       )}
                       <button className="text-blue-600 hover:text-blue-900 transition-colors p-1">
-                        <Settings className="w-4 h-4" />
+                        <BiCog className="w-4 h-4" />
                       </button>
                       <button className="text-gray-600 hover:text-gray-900 transition-colors p-1">
-                        <Activity className="w-4 h-4" />
+                        <BiBarChart className="w-4 h-4" />
                       </button>
                     </div>
                   </td>
