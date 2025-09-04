@@ -1,4 +1,5 @@
-import { Search, Plus, Filter, MapPin, Home, DollarSign } from 'lucide-react';
+import Image from 'next/image';
+import { BiSearch, BiPlus, BiFilter, BiMapPin, BiHome, BiDollar } from 'react-icons/bi';
 
 const properties = [
   {
@@ -52,7 +53,7 @@ export default function PropertiesPage() {
           <p className="text-gray-600 mt-1">مدیریت و نمایش فایل‌های ملکی موجود</p>
         </div>
         <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
-          <Plus className="w-5 h-5" />
+          <BiPlus className="w-5 h-5" />
           فایل جدید
         </button>
       </div>
@@ -61,7 +62,7 @@ export default function PropertiesPage() {
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           <div className="relative">
-            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <BiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input
               type="text"
               placeholder="جستجو در فایل‌ها..."
@@ -94,7 +95,7 @@ export default function PropertiesPage() {
           
           <div className="flex gap-2">
             <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition-colors">
-              <Filter className="w-4 h-4" />
+              <BiFilter className="w-4 h-4" />
               فیلتر
             </button>
           </div>
@@ -106,9 +107,11 @@ export default function PropertiesPage() {
         {properties.map((property) => (
           <div key={property.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
             <div className="relative">
-              <img 
+              <Image 
                 src={property.image} 
                 alt={property.title}
+                width={400}
+                height={192}
                 className="w-full h-48 object-cover"
               />
               <div className="absolute top-3 right-3">
@@ -127,18 +130,18 @@ export default function PropertiesPage() {
               
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Home className="w-4 h-4" />
+                  <BiHome className="w-4 h-4" />
                   <span>{property.type} - {property.area} متر</span>
                   {property.rooms !== '-' && <span>- {property.rooms} خواب</span>}
                 </div>
                 
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <MapPin className="w-4 h-4" />
+                  <BiMapPin className="w-4 h-4" />
                   <span>{property.location}</span>
                 </div>
                 
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <DollarSign className="w-4 h-4" />
+                  <BiDollar className="w-4 h-4" />
                   <span className="font-semibold text-green-600">{property.price} تومان</span>
                 </div>
               </div>
