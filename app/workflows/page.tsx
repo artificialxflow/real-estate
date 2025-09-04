@@ -12,8 +12,7 @@ import {
   BiPlus,
   BiRefresh,
   BiTime,
-  BiInfoCircle,
-  BiX
+  BiInfoCircle
 } from 'react-icons/bi';
 
 interface Workflow {
