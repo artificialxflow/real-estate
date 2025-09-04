@@ -1,31 +1,31 @@
-import { Plus, Upload, Download, RefreshCw } from 'lucide-react';
+import { BiPlus, BiUpload, BiDownload, BiRefresh } from 'react-icons/bi';
 
 const actions = [
   {
     title: 'مشتری جدید',
     description: 'ثبت مشتری جدید در سیستم',
-    icon: Plus,
+    icon: BiPlus,
     color: 'bg-blue-500 hover:bg-blue-600',
     href: '/customers/new'
   },
   {
     title: 'فایل ملکی جدید',
     description: 'اضافه کردن ملک جدید',
-    icon: Upload,
+    icon: BiUpload,
     color: 'bg-green-500 hover:bg-green-600',
     href: '/properties/new'
   },
   {
     title: 'اجرای اسکریپینگ',
     description: 'دریافت آگهی‌های جدید',
-    icon: RefreshCw,
+    icon: BiRefresh,
     color: 'bg-purple-500 hover:bg-purple-600',
     href: '/scraping/run'
   },
   {
     title: 'گزارش‌گیری',
     description: 'تولید گزارش‌های مدیریتی',
-    icon: Download,
+    icon: BiDownload,
     color: 'bg-orange-500 hover:bg-orange-600',
     href: '/reports'
   }
