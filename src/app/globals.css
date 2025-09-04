@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazir:wght@300;400;500;600;700&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 * {
   margin: 0;
@@ -44,6 +44,44 @@ body {
   background: #a8a8a8;
 }
 
+/* Mobile optimizations */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    z-index: 1050;
+    transform: translateX(100%) !important; /* Hidden by default */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.show {
+    transform: translateX(0) !important; /* Slide into view */
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar-mobile {
+    width: 100vw;
+    max-width: 320px;
+  }
+  
+  .main-content-mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .header-mobile {
+    padding: 0.5rem;
+  }
+  
+  .search-mobile {
+    font-size: 14px;
+  }
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { 
@@ -65,12 +103,27 @@ body {
   }
 }
 
+@keyframes slideInRight {
+  from { 
+    opacity: 0; 
+    transform: translateX(100%); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
 .fade-in {
   animation: fadeIn 0.5s ease-in;
 }
 
 .slide-in {
   animation: slideIn 0.3s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-out;
 }
 
 /* Custom utilities */
