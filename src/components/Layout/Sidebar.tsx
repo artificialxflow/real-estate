@@ -3,24 +3,24 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
-  Home, 
-  Users, 
-  Building, 
-  FileText, 
-  Workflow, 
-  BarChart3, 
-  Settings,
-  LogOut
-} from 'lucide-react';
+  BiHome, 
+  BiUser, 
+  BiBuilding, 
+  BiFile, 
+  BiCog, 
+  BiBarChart, 
+  BiCog as BiSettings,
+  BiLogOut
+} from 'react-icons/bi';
 
 const menuItems = [
-  { href: '/dashboard', icon: Home, label: 'داشبورد', color: 'text-blue-400' },
-  { href: '/customers', icon: Users, label: 'مدیریت مشتریان', color: 'text-green-400' },
-  { href: '/properties', icon: Building, label: 'فایل‌های ملکی', color: 'text-purple-400' },
-  { href: '/listings', icon: FileText, label: 'آگهی‌های اسکریپ شده', color: 'text-orange-400' },
-  { href: '/workflows', icon: Workflow, label: 'ورک‌فلوها', color: 'text-pink-400' },
-  { href: '/reports', icon: BarChart3, label: 'گزارش‌گیری', color: 'text-cyan-400' },
-  { href: '/settings', icon: Settings, label: 'تنظیمات', color: 'text-gray-400' },
+  { href: '/dashboard', icon: BiHome, label: 'داشبورد', color: 'text-blue-400' },
+  { href: '/customers', icon: BiUser, label: 'مدیریت مشتریان', color: 'text-green-400' },
+  { href: '/properties', icon: BiBuilding, label: 'فایل‌های ملکی', color: 'text-purple-400' },
+  { href: '/listings', icon: BiFile, label: 'آگهی‌های اسکریپ شده', color: 'text-orange-400' },
+  { href: '/workflows', icon: BiCog, label: 'ورک‌فلوها', color: 'text-pink-400' },
+  { href: '/reports', icon: BiBarChart, label: 'گزارش‌گیری', color: 'text-cyan-400' },
+  { href: '/settings', icon: BiSettings, label: 'تنظیمات', color: 'text-gray-400' },
 ];
 
 interface SidebarProps {
@@ -103,7 +103,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <p className="text-blue-200 text-sm">admin@example.com</p>
               </div>
               <button className="text-blue-200 hover:text-white transition-colors">
-                <LogOut className="w-5 h-5" />
+                <BiLogOut className="w-5 h-5" />
               </button>
             </div>
           </div>
