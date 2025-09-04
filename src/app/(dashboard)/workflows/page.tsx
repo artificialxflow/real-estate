@@ -101,10 +101,10 @@ const workflows = [
 ];
 
 export default function WorkflowsPage() {
-  const [selectedWorkflow, setSelectedWorkflow] = useState<any>(null);
+  const [selectedWorkflow, setSelectedWorkflow] = useState<typeof workflows[0] | null>(null);
   const [showModal, setShowModal] = useState(false);
 
-  const openWorkflowDetails = (workflow: any) => {
+  const openWorkflowDetails = (workflow: typeof workflows[0]) => {
     setSelectedWorkflow(workflow);
     setShowModal(true);
   };
