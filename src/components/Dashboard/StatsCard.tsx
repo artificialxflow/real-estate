@@ -1,11 +1,11 @@
-import { DivideIcon as LucideIcon } from 'lucide-react';
+import { BiBarChart } from 'react-icons/bi';
 
 interface StatsCardProps {
   title: string;
   value: string | number;
   change?: string;
   changeType?: 'increase' | 'decrease';
-  icon: LucideIcon;
+  icon: typeof BiBarChart;
   color: string;
 }
 
