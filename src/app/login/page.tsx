@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, Building } from 'lucide-react';
+import { BiShow, BiHide, BiEnvelope, BiLock, BiBuilding } from 'react-icons/bi';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +22,7 @@ export default function LoginPage() {
         {/* Logo and Title */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Building className="w-8 h-8 text-white" />
+            <BiBuilding className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900">بنگاه معاملات ملکی</h1>
           <p className="text-gray-600 mt-2">سیستم اتوماسیون و مدیریت</p>
@@ -39,7 +39,7 @@ export default function LoginPage() {
                 ایمیل یا شماره موبایل
               </label>
               <div className="relative">
-                <Mail className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <BiEnvelope className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="email"
                   value={formData.email}
@@ -57,7 +57,7 @@ export default function LoginPage() {
                 رمز عبور
               </label>
               <div className="relative">
-                <Lock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <BiLock className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={formData.password}
@@ -71,7 +71,7 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? <BiHide className="w-5 h-5" /> : <BiShow className="w-5 h-5" />}
                 </button>
               </div>
             </div>
