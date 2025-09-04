@@ -1,5 +1,4 @@
-import { Download, Calendar, TrendingUp, Users, Building } from 'lucide-react';
-import { SalesTrendChart, MonthlyRevenueChart } from '@/components/Dashboard/Charts';
+import { BiDownload, BiCalendar, BiTrendingUp, BiUser, BiBuilding } from 'react-icons/bi';
 
 export default function ReportsPage() {
   return (
@@ -12,11 +11,11 @@ export default function ReportsPage() {
         </div>
         <div className="flex gap-2">
           <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
-            <Download className="w-5 h-5" />
+            <BiDownload className="w-5 h-5" />
             خروجی Excel
           </button>
           <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
-            <Download className="w-5 h-5" />
+            <BiDownload className="w-5 h-5" />
             خروجی PDF
           </button>
         </div>
@@ -66,7 +65,7 @@ export default function ReportsPage() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Users className="w-6 h-6 text-blue-600" />
+              <BiUser className="w-6 h-6 text-blue-600" />
             </div>
             <div>
               <h3 className="font-semibold text-gray-900">گزارش مشتریان</h3>
@@ -88,7 +87,7 @@ export default function ReportsPage() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <Building className="w-6 h-6 text-green-600" />
+              <BiBuilding className="w-6 h-6 text-green-600" />
             </div>
             <div>
               <h3 className="font-semibold text-gray-900">گزارش املاک</h3>
@@ -110,7 +109,7 @@ export default function ReportsPage() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <TrendingUp className="w-6 h-6 text-purple-600" />
+              <BiTrendingUp className="w-6 h-6 text-purple-600" />
             </div>
             <div>
               <h3 className="font-semibold text-gray-900">گزارش معاملات</h3>
@@ -132,7 +131,7 @@ export default function ReportsPage() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-              <Calendar className="w-6 h-6 text-orange-600" />
+              <BiCalendar className="w-6 h-6 text-orange-600" />
             </div>
             <div>
               <h3 className="font-semibold text-gray-900">گزارش ورک‌فلوها</h3>
@@ -155,10 +154,16 @@ export default function ReportsPage() {
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <SalesTrendChart />
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">روند فروش</h3>
+          <div className="h-64 flex items-center justify-center text-gray-500">
+            نمودار روند فروش
+          </div>
         </div>
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <MonthlyRevenueChart />
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">درآمد ماهانه</h3>
+          <div className="h-64 flex items-center justify-center text-gray-500">
+            نمودار درآمد ماهانه
+          </div>
         </div>
       </div>
 
