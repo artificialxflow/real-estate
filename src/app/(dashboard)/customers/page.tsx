@@ -1,4 +1,4 @@
-import { Search, Plus, Filter, Download } from 'lucide-react';
+import { BiSearch, BiPlus, BiFilter, BiDownload } from 'react-icons/bi';
 
 const customers = [
   {
@@ -46,7 +46,7 @@ export default function CustomersPage() {
           <p className="text-gray-600 mt-1">مدیریت اطلاعات مشتریان و پیگیری آن‌ها</p>
         </div>
         <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
-          <Plus className="w-5 h-5" />
+          <BiPlus className="w-5 h-5" />
           مشتری جدید
         </button>
       </div>
@@ -55,7 +55,7 @@ export default function CustomersPage() {
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="relative">
-            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <BiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input
               type="text"
               placeholder="جستجو در مشتریان..."
@@ -78,11 +78,11 @@ export default function CustomersPage() {
           
           <div className="flex gap-2">
             <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition-colors">
-              <Filter className="w-4 h-4" />
+              <BiFilter className="w-4 h-4" />
               فیلتر
             </button>
             <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition-colors">
-              <Download className="w-4 h-4" />
+              <BiDownload className="w-4 h-4" />
               خروجی
             </button>
           </div>
